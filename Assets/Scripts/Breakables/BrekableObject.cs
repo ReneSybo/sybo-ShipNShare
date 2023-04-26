@@ -1,13 +1,21 @@
 ﻿using UnityEngine;
+using UnityEngine.Audio;
 
 namespace Classroom
 {
 	public class BrekableObject : MonoBehaviour
 	{
-		[SerializeField] BreakableDispatcher _dispatcher;
+		[Header("Sound")]
+		[SerializeField] AudioClip _impactSound;
+		[SerializeField] float _impactForSound;
+		
+		[Header("Objects")]
 		[SerializeField] GameObject _unbrokenRoot;
 		[SerializeField] GameObject _brokenRoot;
-		[SerializeField] float _strength;
+		
+		[Header("Misc")]
+		[SerializeField] float _impactForBreak;
+		[SerializeField] BreakableDispatcher _dispatcher;
 
 		bool _broken;
 		Rigidbody _unbrokenBody;
@@ -26,12 +34,17 @@ namespace Classroom
 
 		void OnBreakableHit(float impactimpulse)
 		{
+			if (impactimpulse >= _impactForSound && _impactSound != null)
+			{
+				SoundPlayer.PlaySound(_impactSound);
+			}
+			
 			if (_broken)
 			{
 				return;
 			}
 			
-			if (impactimpulse >= _strength)
+			if (impactimpulse >= _impactForBreak)
 			{
 				Break();
 			}
