@@ -3,7 +3,7 @@
 --- !u!129 &1
 PlayerSettings:
   m_ObjectHideFlags: 0
-  serializedVersion: 22
+  serializedVersion: 23
   productGUID: f793e2a9acd21e04688b0bdfc2691baa
   AndroidProfiler: 0
   AndroidFilterTouchesWhenObscured: 0
@@ -51,7 +51,7 @@ PlayerSettings:
   m_MTRendering: 1
   mipStripping: 0
   numberOfMipsStripped: 0
-  m_StackTraceTypes: 010000000100000001000000010000000100000001000000
+  m_StackTraceTypes: 000000000000000000000000000000000000000001000000
   iosShowActivityIndicatorOnLoading: -1
   androidShowActivityIndicatorOnLoading: -1
   iosUseCustomAppBackgroundBehavior: 0
@@ -85,7 +85,7 @@ PlayerSettings:
   hideHomeButton: 0
   submitAnalytics: 1
   usePlayerLog: 1
-  bakeCollisionMeshes: 0
+  bakeCollisionMeshes: 1
   forceSingleInstance: 0
   useFlipModelSwapchain: 1
   resizableWindow: 0
@@ -343,8 +343,13 @@ PlayerSettings:
     Android: 1
     iPhone: 1
     tvOS: 1
-  m_BuildTargetGroupLightmapEncodingQuality: []
-  m_BuildTargetGroupLightmapSettings: []
+  m_BuildTargetGroupLightmapEncodingQuality:
+  - m_BuildTarget: WebGL
+    m_EncodingQuality: 0
+  m_BuildTargetGroupLightmapSettings:
+  - m_BuildTarget: WebGL
+    m_TextureStreamingEnabled: 1
+    m_TextureStreamingPriority: 0
   m_BuildTargetNormalMapEncoding: []
   playModeTestRunnerEnabled: 0
   runPlayModeTestAsEditModeTest: 0
@@ -578,7 +583,7 @@ PlayerSettings:
   blurSplashScreenBackground: 1
   spritePackerPolicy: 
   webGLMemorySize: 16
-  webGLExceptionSupport: 1
+  webGLExceptionSupport: 0
   webGLNameFilesAsHashes: 0
   webGLDataCaching: 1
   webGLDebugSymbols: 0
@@ -588,7 +593,7 @@ PlayerSettings:
   webGLAnalyzeBuildSize: 0
   webGLUseEmbeddedResources: 0
   webGLCompressionFormat: 1
-  webGLWasmArithmeticExceptions: 0
+  webGLWasmArithmeticExceptions: 1
   webGLLinkerTarget: 1
   webGLThreadsSupport: 0
   webGLDecompressionFallback: 0

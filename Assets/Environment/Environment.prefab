@@ -435,7 +435,7 @@ Light:
   m_InnerSpotAngle: 21.80208
   m_CookieSize: 10
   m_Shadows:
-    m_Type: 2
+    m_Type: 0
     m_Resolution: 0
     m_CustomResolution: -1
     m_Strength: 1
@@ -522,7 +522,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: 69cbae5d4742f724c8962422f4997bbd, type: 3}
   m_PlayOnAwake: 1
-  m_Volume: 1
+  m_Volume: 0.246
   m_Pitch: 1
   Loop: 1
   Mute: 0
@@ -616,6 +616,10 @@ PrefabInstance:
     - target: {fileID: 8643563364450007501, guid: e1263d2a4005e41f78abd51cac9e83ae, type: 3}
       propertyPath: m_Name
       value: Default_Kid
+      objectReference: {fileID: 0}
+    - target: {fileID: 8643563364450007501, guid: e1263d2a4005e41f78abd51cac9e83ae, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8989127376704054135, guid: e1263d2a4005e41f78abd51cac9e83ae, type: 3}
       propertyPath: m_RootOrder

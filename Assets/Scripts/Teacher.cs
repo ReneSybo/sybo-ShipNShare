@@ -1,4 +1,6 @@
-﻿using Classroom.Sound;
+﻿using System;
+using System.Collections.Generic;
+using Classroom.Sound;
 using UnityEngine;
 
 namespace Classroom
@@ -10,10 +12,31 @@ namespace Classroom
 		static readonly int FaceBoard = Animator.StringToHash("FaceBoard");
 		static readonly int Alert = Animator.StringToHash("Alert");
 		
+		[SerializeField] AudioSource _source;
 		[SerializeField] Animator _animator;
 		[SerializeField] float _awarenessCap = 10f;
 		[SerializeField] float _awrenessDropPerSecond = 1f;
 		[SerializeField] float _currentAwareness = 0f;
+		
+		[Header("Idle sounds")]
+		[SerializeField] AwarenessSoundConfig _soundConfig = null;
+		AwarenessState _currentState;
+		
+		
+		enum AwarenessState
+		{
+			Low,
+			Medium,
+			High
+		}
+
+		[Serializable]
+		class AwarenessSoundConfig
+		{
+			public AwarenessState State;
+			public AudioClip Clip;
+			public float Level;
+		}
 
 		bool _hasCaughtYou;
 		
@@ -25,6 +48,12 @@ namespace Classroom
 			GameEvents.AudioPlayed.AddListener(OnSoundPlayed);
 			GameEvents.AudioAwarenessAdded.AddListener(OnAwarenessAdded);
 			GameEvents.QuitGame.AddListener(OnGameEnded);
+			GameEvents.GameStarted.AddListener(OnGameStarted);
+		}
+
+		void OnGameStarted()
+		{
+			// _source.clip = 
 		}
 
 		void OnGameEnded()
@@ -32,6 +61,8 @@ namespace Classroom
 			_animator.SetTrigger(FaceBoard);
 			_currentAwareness = 0f;
 			_hasCaughtYou = false;
+			_currentState = AwarenessState.Low;
+			_source.Stop();
 		}
 
 		void OnAwarenessAdded(float awareness)

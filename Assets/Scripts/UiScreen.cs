@@ -16,6 +16,8 @@ namespace Classroom
 
 		void Awake()
 		{
+			Application.targetFrameRate = 50;
+			
 			GameEvents.GameEnded.AddListener(OnGameEnded);
 			_playButton.onClick.AddListener(OnPlayClick);
 			_retryButton.onClick.AddListener(OnRetry);
