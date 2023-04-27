@@ -8,7 +8,6 @@ namespace Kids
 		[SerializeField] protected Rigidbody _body;
 		[SerializeField] protected Animator _animator;
 		
-		bool _isFree;
 		Vector3 _startPos;
 		Quaternion _startRot;
 		Transform _transform;
@@ -36,7 +35,6 @@ namespace Kids
 		protected void Free()
 		{
 			_body.constraints = RigidbodyConstraints.FreezeAll;
-			_isFree = true;
 		}
 	}
 }

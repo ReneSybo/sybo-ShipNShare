@@ -35,8 +35,7 @@ namespace Classroom
 
 		void OnGameStarted()
 		{
-			Vector3 targetPosition = _target.position + (_backwards * _distance);
-			StartCoroutine(MoveCameraTo(targetPosition, 2f, true));
+			StartCoroutine(MoveCameraTo(Vector3.zero, 2f, true));
 		}
 
 		void OnKidCaught()
@@ -57,6 +56,10 @@ namespace Classroom
 			
 			while (moveRatio < 1)
 			{
+				if (removeOverview)
+				{
+					pos = _target.position + (_backwards * _distance);
+				}
 				current = Vector3.Slerp(start, pos, moveRatio);
 				_transform.position = current;
 
