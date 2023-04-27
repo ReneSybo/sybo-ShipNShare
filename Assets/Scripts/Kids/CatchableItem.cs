@@ -5,6 +5,7 @@ namespace Kids
 	public abstract class CatchableItem : MonoBehaviour
 	{
 		[SerializeField] protected Rigidbody _body;
+		[SerializeField] protected Animator _animator;
 		
 		bool _isFree;
 
