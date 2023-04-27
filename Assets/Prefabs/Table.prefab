@@ -1174,7 +1174,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 637700768701773591, guid: e596ccc8510f403438fcdda045535572, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0
+      value: 4.36
       objectReference: {fileID: 0}
     - target: {fileID: 637700768701773591, guid: e596ccc8510f403438fcdda045535572, type: 3}
       propertyPath: m_LocalRotation.w
@@ -1182,15 +1182,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 637700768701773591, guid: e596ccc8510f403438fcdda045535572, type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 637700768701773591, guid: e596ccc8510f403438fcdda045535572, type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 637700768701773591, guid: e596ccc8510f403438fcdda045535572, type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 637700768701773591, guid: e596ccc8510f403438fcdda045535572, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -1211,7 +1211,7 @@ PrefabInstance:
     - target: {fileID: 1530435111036782885, guid: e596ccc8510f403438fcdda045535572, type: 3}
       propertyPath: _impactSound
       value: 
-      objectReference: {fileID: 8300000, guid: 762d7e91d60a74a4d90b096984e72d36, type: 3}
+      objectReference: {fileID: 11400000, guid: e9e64341e6e5ecc499ab809acff6ff1f, type: 2}
     - target: {fileID: 1530435111036782885, guid: e596ccc8510f403438fcdda045535572, type: 3}
       propertyPath: _brokenPrefab
       value: 

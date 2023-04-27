@@ -1,24 +1,35 @@
-﻿using System;
-using System.Collections;
+﻿using System.Collections;
+using Classroom.Sound;
 using UnityEngine;
 
 namespace Classroom
 {
 	public class Teacher : MonoBehaviour
 	{
-		[SerializeField] float _idleTime = 1f;
-		[SerializeField] float _activeTime = 1f;
-		[SerializeField] float _rotateSpeed = 1f;
+		[SerializeField] float _teachingTime = 10f;
+		[SerializeField] float _lookingTime = 1f;
+		[SerializeField] float _rotateSpeed = 360f;
 
-		bool _isActive;
+		bool _isTeaching;
 		bool _isRotating;
+		
 		float _rotateTimer;
 		
 		Quaternion _activeRotation;
 		Quaternion _idleRotation;
 
 		Transform _transform;
-		
+
+		void OnSoundPlayed(GameSound sound)
+		{
+			if (sound.Awareness <= 0f)
+			{
+				return;
+			}
+
+			_rotateTimer -= sound.Awareness;
+		}
+
 		void Awake()
 		{
 			_transform = transform;
@@ -27,9 +38,11 @@ namespace Classroom
 			_transform.Rotate(Vector3.up, 180);
 			_idleRotation = _transform.localRotation;
 
-			_isActive = false;
+			_isTeaching = true;
 			_isRotating = false;
-			_rotateTimer = _idleTime;
+			_rotateTimer = _teachingTime;
+			
+			GameEvents.AudioPlayed.AddListener(OnSoundPlayed);
 		}
 
 		void Update()
@@ -39,14 +52,8 @@ namespace Classroom
 				_rotateTimer -= Time.deltaTime;
 				if (_rotateTimer <= 0f)
 				{
-					_isActive = !_isActive;
 					StartCoroutine(RotateAround());
 				}
-			}
-
-			if (_isActive)
-			{
-				
 			}
 		}
 
@@ -54,9 +61,17 @@ namespace Classroom
 		{
 			_isRotating = true;
 
-			Quaternion target = _isActive ? _activeRotation : _idleRotation;
+			Quaternion target = _isTeaching ? _activeRotation : _idleRotation;
 			Quaternion current;
-			
+
+			if (_isTeaching)
+			{
+				const float delayTime = 1f;
+				GameEvents.LookHappeningIn.Dispatch(delayTime);
+				yield return new WaitForSecondsRealtime(delayTime);
+				Debug.Log("NO LONGER SAFE");
+			}
+
 			do
 			{
 				current = Quaternion.RotateTowards(_transform.localRotation, target, Time.deltaTime * _rotateSpeed);
@@ -65,7 +80,15 @@ namespace Classroom
 			} while (target != current);
 
 			_isRotating = false;
-			_rotateTimer = _isActive ? _activeTime : _idleTime;
+			_rotateTimer = _isTeaching ? _lookingTime : _teachingTime;
+			
+			_isTeaching = !_isTeaching;
+			
+			if (_isTeaching)
+			{
+				Debug.Log("Safe again");
+				GameEvents.LookOver.Dispatch();
+			}
 		}
 	}
 }

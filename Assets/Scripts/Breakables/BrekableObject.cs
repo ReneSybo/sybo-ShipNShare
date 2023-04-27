@@ -1,20 +1,21 @@
-﻿using UnityEngine;
-using UnityEngine.Audio;
+﻿using Classroom.Sound;
+using UnityEngine;
 
 namespace Classroom
 {
 	public class BrekableObject : MonoBehaviour
 	{
 		[Header("Sound")]
-		[SerializeField] AudioClip _impactSound;
+		[SerializeField] GameSound _impactSound;
+		[SerializeField] GameSound _breakSound;
+		
+		[Header("Impacting")]
 		[SerializeField] float _impactForSound;
+		[SerializeField] float _impactForBreak;
 		
 		[Header("Objects")]
 		[SerializeField] GameObject _unbrokenRoot;
 		[SerializeField] GameObject _brokenRoot;
-		
-		[Header("Misc")]
-		[SerializeField] float _impactForBreak;
 		[SerializeField] BreakableDispatcher _dispatcher;
 
 		bool _broken;
@@ -36,7 +37,7 @@ namespace Classroom
 		{
 			if (impactimpulse >= _impactForSound && _impactSound != null)
 			{
-				SoundPlayer.PlaySound(_impactSound);
+				GameEvents.AudioPlayed.Dispatch(_impactSound);
 			}
 			
 			if (_broken)
@@ -64,6 +65,11 @@ namespace Classroom
 			{
 				targetBody.velocity = _unbrokenBody.velocity;
 				targetBody.angularVelocity = _unbrokenBody.angularVelocity;
+			}
+
+			if (_breakSound != null)
+			{
+				GameEvents.AudioPlayed.Dispatch(_breakSound);
 			}
 		}
 	}
