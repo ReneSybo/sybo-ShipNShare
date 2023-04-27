@@ -33,7 +33,7 @@ ModelImporter:
   animations:
     legacyGenerateAnimations: 4
     bakeSimulation: 0
-    resampleCurves: 1
+    resampleCurves: 0
     optimizeGameObjects: 0
     motionNodeName: 
     rigImportErrors: 
@@ -86,7 +86,7 @@ ModelImporter:
       takeName: Teacher_Rig|Teacher_Catch
       internalID: 0
       firstFrame: 0
-      lastFrame: 150
+      lastFrame: 109
       wrapMode: 0
       orientationOffsetY: 0
       level: 0

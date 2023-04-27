@@ -1,7 +1,7 @@
 fileFormatVersion: 2
 guid: 65f423ea5893a174ea3675bd32aeed4d
 ModelImporter:
-  serializedVersion: 20300
+  serializedVersion: 20200
   internalIDToNameTable:
   - first:
       74: 7829421943199259260
@@ -12,7 +12,12 @@ ModelImporter:
   - first:
       74: 7773046402762111257
     second: Player_Rig|Player_Walk
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Material.002
+    second: {fileID: 2100000, guid: ba454f6f44b014e7388a474dd349fd93, type: 2}
   materials:
     materialImportMode: 2
     materialName: 0
@@ -192,7 +197,6 @@ ModelImporter:
   humanoidOversampling: 1
   avatarSetup: 1
   addHumanoidExtraRootOnlyWhenUsingAvatar: 1
-  remapMaterialsIfMaterialImportModeIsNone: 1
   additionalBone: 0
   userData: 
   assetBundleName: 

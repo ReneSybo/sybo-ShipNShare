@@ -12,5 +12,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b83331f30b6c48dd96399c20093ec4cf, type: 3}
   m_Name: TableImpact
   m_EditorClassIdentifier: 
-  Clip: {fileID: 8300000, guid: e4a4b77536565b2489d62dfd20403b9b, type: 3}
+  Clip: {fileID: 8300000, guid: 709a7ab2e62a0c34791f4094856e2e69, type: 3}
   Awareness: 1
