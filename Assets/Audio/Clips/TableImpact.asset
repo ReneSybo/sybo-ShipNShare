@@ -13,5 +13,4 @@ MonoBehaviour:
   m_Name: TableImpact
   m_EditorClassIdentifier: 
   Clip: {fileID: 8300000, guid: e4a4b77536565b2489d62dfd20403b9b, type: 3}
-  Range: 25
-  Awareness: 10
+  Awareness: 1

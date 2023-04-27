@@ -6,17 +6,13 @@ namespace Classroom
 	public class BrekableObject : MonoBehaviour
 	{
 		[Header("Sound")]
-		[SerializeField] GameSound _impactSound;
 		[SerializeField] GameSound _breakSound;
-		
-		[Header("Impacting")]
-		[SerializeField] float _impactForSound;
 		[SerializeField] float _impactForBreak;
 		
 		[Header("Objects")]
 		[SerializeField] GameObject _unbrokenRoot;
 		[SerializeField] GameObject _brokenRoot;
-		[SerializeField] BreakableDispatcher _dispatcher;
+		[SerializeField] ImpactDispatcher _dispatcher;
 
 		bool _broken;
 		Rigidbody _unbrokenBody;
@@ -35,17 +31,12 @@ namespace Classroom
 
 		void OnBreakableHit(float impactimpulse)
 		{
-			if (impactimpulse >= _impactForSound && _impactSound != null)
-			{
-				GameEvents.AudioPlayed.Dispatch(_impactSound);
-			}
-			
 			if (_broken)
 			{
 				return;
 			}
 			
-			if (impactimpulse >= _impactForBreak)
+			if (impactimpulse >= _impactForBreak * _impactForBreak)
 			{
 				Break();
 			}

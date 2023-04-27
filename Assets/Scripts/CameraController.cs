@@ -46,7 +46,7 @@ namespace Classroom
 			}
 
 			_desiredPosition = _oldPos;
-			_routine = StartCoroutine(MoveCameraTo(true));
+			// _routine = StartCoroutine(MoveCameraTo(true));
 		}
 
 		void OnAboutToLook(float delay)
@@ -61,7 +61,7 @@ namespace Classroom
 			_isInOverview = true;
 			
 			_desiredPosition = _overviewPos;
-			_routine = StartCoroutine(MoveCameraTo(false));
+			// _routine = StartCoroutine(MoveCameraTo(false));
 		}
 
 		IEnumerator MoveCameraTo(bool returningToNormal)
@@ -97,10 +97,10 @@ namespace Classroom
 
 		void Update()
 		{
-			if (!_isInOverview)
-			{
-				_transform.position = _target.position + (_backwards * _distance);
-			}
+			// if (!_isInOverview)
+			// {
+			// 	_transform.position = _target.position + (_backwards * _distance);
+			// }
 			
 		}
 

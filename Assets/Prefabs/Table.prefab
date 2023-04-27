@@ -390,6 +390,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2588771051924209898}
   - component: {fileID: 1146424476416125301}
+  - component: {fileID: 660694599920885684}
   m_Layer: 0
   m_Name: Left
   m_TagString: Untagged
@@ -430,6 +431,21 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!114 &660694599920885684
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2412583755953715676}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fc2d8c776a07461f87bc5a0815574ad8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _sound: {fileID: 11400000, guid: e9e64341e6e5ecc499ab809acff6ff1f, type: 2}
+  _impactForceRequired: 3
+  timeBetweenImpact: 1
 --- !u!1 &2642295064374050195
 GameObject:
   m_ObjectHideFlags: 0
@@ -535,6 +551,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4505197143416918735}
   - component: {fileID: 1113071109345076778}
+  - component: {fileID: 2800547772834872172}
   m_Layer: 0
   m_Name: Right
   m_TagString: Untagged
@@ -575,6 +592,21 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!114 &2800547772834872172
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3177834886642908215}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fc2d8c776a07461f87bc5a0815574ad8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _sound: {fileID: 11400000, guid: e9e64341e6e5ecc499ab809acff6ff1f, type: 2}
+  _impactForceRequired: 3
+  timeBetweenImpact: 1
 --- !u!1 &3859574276474728346
 GameObject:
   m_ObjectHideFlags: 0
@@ -1209,6 +1241,10 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1530435111036782885, guid: e596ccc8510f403438fcdda045535572, type: 3}
+      propertyPath: _breakSound
+      value: 
+      objectReference: {fileID: 11400000, guid: 96e99d26f656f344797f9c35be6f0393, type: 2}
+    - target: {fileID: 1530435111036782885, guid: e596ccc8510f403438fcdda045535572, type: 3}
       propertyPath: _impactSound
       value: 
       objectReference: {fileID: 11400000, guid: e9e64341e6e5ecc499ab809acff6ff1f, type: 2}
@@ -1218,7 +1254,7 @@ PrefabInstance:
       objectReference: {fileID: 4185633301872569963, guid: 3e72e0457a3d1934a9153f2f5af128ac, type: 3}
     - target: {fileID: 1530435111036782885, guid: e596ccc8510f403438fcdda045535572, type: 3}
       propertyPath: _impactForBreak
-      value: 5
+      value: 3.5
       objectReference: {fileID: 0}
     - target: {fileID: 1530435111036782885, guid: e596ccc8510f403438fcdda045535572, type: 3}
       propertyPath: _impactForSound
@@ -1234,6 +1270,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e596ccc8510f403438fcdda045535572, type: 3}
+--- !u!1 &3465613038084959478 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3459022185595693392, guid: e596ccc8510f403438fcdda045535572, type: 3}
+  m_PrefabInstance: {fileID: 6965318964757926}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &1404369325370736525 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 1397783423900793387, guid: e596ccc8510f403438fcdda045535572, type: 3}
@@ -1244,3 +1285,18 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 56992705541499628, guid: e596ccc8510f403438fcdda045535572, type: 3}
   m_PrefabInstance: {fileID: 6965318964757926}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &2654670376234882821
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3465613038084959478}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fc2d8c776a07461f87bc5a0815574ad8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _sound: {fileID: 11400000, guid: e9e64341e6e5ecc499ab809acff6ff1f, type: 2}
+  _impactForceRequired: 3
+  timeBetweenImpact: 1
