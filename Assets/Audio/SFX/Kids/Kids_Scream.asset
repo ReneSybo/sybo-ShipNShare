@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: b83331f30b6c48dd96399c20093ec4cf, type: 3}
-  m_Name: TableBreak
+  m_Name: Kids_Scream
   m_EditorClassIdentifier: 
-  Clip: {fileID: 8300000, guid: f570c893903a0404ab02ff65ceba67ea, type: 3}
-  Awareness: 5
+  Clip: {fileID: 8300000, guid: 102821cb758a39a42b2cf0ab472a9c8a, type: 3}
+  Awareness: 0

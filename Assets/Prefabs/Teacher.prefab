@@ -46,14 +46,21 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _source: {fileID: 1904390735}
+  _gameOverSound: {fileID: 8300000, guid: 4616a9962595e48bebc326112d30ae0a, type: 3}
   _animator: {fileID: 532163827193282805}
   _awarenessCap: 10
   _awrenessDropPerSecond: 1
   _currentAwareness: 0
-  _soundConfig:
-    State: 0
-    Clip: {fileID: 0}
+  _soundConfigs:
+  - State: 1
+    Clip: {fileID: 8300000, guid: 2ad302337b4f54880be005b52c447b5e, type: 3}
     Level: 0
+  - State: 2
+    Clip: {fileID: 8300000, guid: 54e19cbff60294d29affd0d998b34614, type: 3}
+    Level: 5
+  - State: 3
+    Clip: {fileID: 8300000, guid: 17a5eceecba0948bc91c8afd564ee6f1, type: 3}
+    Level: 8
 --- !u!82 &1904390735
 AudioSource:
   m_ObjectHideFlags: 0
@@ -68,7 +75,7 @@ AudioSource:
   m_PlayOnAwake: 1
   m_Volume: 1
   m_Pitch: 1
-  Loop: 0
+  Loop: 1
   Mute: 0
   Spatialize: 0
   SpatializePostEffects: 0

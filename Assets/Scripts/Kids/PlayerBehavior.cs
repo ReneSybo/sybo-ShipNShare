@@ -17,6 +17,7 @@ namespace Classroom
 		bool _canMove;
 		Vector3 _currentMeshForward;
 		float _contactTime;
+		RigidbodyConstraints _defaultConstraints;
 
 		protected override void Awake()
 		{
@@ -28,6 +29,7 @@ namespace Classroom
 			GameEvents.GameEnded.AddListener(OnEndGame);
 
 			_currentMeshForward = _meshContainer.forward;
+			_defaultConstraints = _body.constraints;
 		}
 
 		void OnEndGame()
@@ -37,10 +39,12 @@ namespace Classroom
 			_contactTime = 0;
 			_animator.SetBool(Moving, false);
 			_animator.SetBool(Contact, false);
+			_body.constraints = RigidbodyConstraints.FreezeAll;
 		}
 
 		void OnStartGame()
 		{
+			_body.constraints = _defaultConstraints;
 			_canMove = true;
 		}
 

@@ -79,6 +79,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _body: {fileID: 6536890836526114868}
   _animator: {fileID: 6314209636717949350}
+  _freedomSounds: {fileID: 11400000, guid: fdc1810a10916df40b1fa0ae2365bb6c, type: 2}
   _collider: {fileID: 6536890836526114871}
   _velocityForMoving: 1
   _rollingSounds:

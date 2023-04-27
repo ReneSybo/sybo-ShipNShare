@@ -10,6 +10,7 @@ namespace Classroom.Kids
 		static readonly int Moving = Animator.StringToHash("Moving");
 		static readonly int Reset = Animator.StringToHash("Reset");
 		
+		[SerializeField] GameSound _freedomSounds;
 		[SerializeField] Collider _collider;
 		[SerializeField] float _velocityForMoving;
 		[SerializeField] GameSound[] _rollingSounds;
@@ -69,6 +70,8 @@ namespace Classroom.Kids
 			{
 				Free();
 				_collider.enabled = false;
+				
+				GameEvents.AudioPlayed.Dispatch(_freedomSounds);
 			}
 		}
 
