@@ -6,19 +6,30 @@ namespace Classroom
 {
 	public class Teacher : MonoBehaviour
 	{
+		enum TeacherState
+		{
+			Teaching,
+			AboutToLook,
+			Alerted,
+			Looking,
+			Catching
+		}
+		
+		static readonly int Caught = Animator.StringToHash("Caught");
+		static readonly int FaceKids = Animator.StringToHash("FaceKids");
+		static readonly int FaceBoard = Animator.StringToHash("FaceBoard");
+		static readonly int Alert = Animator.StringToHash("Alert");
+		
+		[SerializeField] Animator _animator;
 		[SerializeField] float _teachingTime = 10f;
 		[SerializeField] float _lookingTime = 1f;
-		[SerializeField] float _rotateTime = 1f;
 
 		bool _isTeaching;
-		bool _isRotating;
+		float _stateTimer;
+		TeacherState _State;
 		
-		float _rotateTimer;
-		
-		Quaternion _activeRotation;
-		Quaternion _idleRotation;
-
 		Transform _transform;
+		bool _caught;
 
 		void OnSoundPlayed(GameSound sound)
 		{
@@ -27,81 +38,70 @@ namespace Classroom
 				return;
 			}
 
-			_rotateTimer -= sound.Awareness;
+			_stateTimer -= sound.Awareness;
 		}
 
 		void Awake()
 		{
+			_State = TeacherState.Teaching;
 			_transform = transform;
 			
-			_activeRotation = _transform.localRotation;
-			_transform.Rotate(Vector3.up, 180);
-			_idleRotation = _transform.localRotation;
-
 			_isTeaching = true;
-			_isRotating = false;
-			_rotateTimer = _teachingTime;
+			_stateTimer = _teachingTime;
 			
 			GameEvents.AudioPlayed.AddListener(OnSoundPlayed);
+			GameEvents.KidCaught.AddListener(OnKidCaught);
+		}
+
+		void OnKidCaught()
+		{
+			_State = TeacherState.Catching;
+			_animator.SetTrigger(Caught);
 		}
 
 		void Update()
 		{
-			if (!_isRotating)
-			{
-				_rotateTimer -= Time.deltaTime;
-				if (_rotateTimer <= 0f)
-				{
-					StartCoroutine(RotateAround());
-				}
-			}
+			_stateTimer -= Time.deltaTime;
 
-			if (!_isTeaching)
+			switch (_State)
 			{
-				GameEvents.TeachCheck.Dispatch();
+				case TeacherState.Teaching:
+					if (_stateTimer <= 0)
+					{
+						_State = TeacherState.AboutToLook;
+						StartCoroutine(DelayedLook());
+					}
+					break;
+				case TeacherState.Alerted:
+					break;
+				case TeacherState.Looking:
+					if (_stateTimer <= 0)
+					{
+						_stateTimer = _teachingTime;
+						_animator.SetTrigger(FaceBoard);
+						_State = TeacherState.Teaching;
+						GameEvents.LookOver.Dispatch();
+					}
+					else
+					{
+						GameEvents.LookCheck.Dispatch();
+					}
+					break;
+				case TeacherState.Catching:
+					//Boo, game over!
+					break;
 			}
 		}
 
-		IEnumerator RotateAround()
+		IEnumerator DelayedLook()
 		{
-			_isRotating = true;
-
-			Quaternion target = _isTeaching ? _activeRotation : _idleRotation;
-			Quaternion current;
-
-			if (_isTeaching)
-			{
-				const float delayTime = 1f;
-				GameEvents.LookHappeningIn.Dispatch(delayTime);
-				yield return new WaitForSecondsRealtime(delayTime);
-			}
-
-			float rotateRatio = 0f;
-			float timer = 0f;
-
-			Quaternion startRotation = _transform.localRotation;
-
-			while (rotateRatio < 1)
-			{
-				current = Quaternion.Lerp(startRotation, target, rotateRatio);
-				_transform.localRotation = current;
-				
-				timer += Time.deltaTime;
-				rotateRatio = timer / _rotateTime;
-				
-				yield return new WaitForEndOfFrame();
-			}
-
-			_isRotating = false;
-			_rotateTimer = _isTeaching ? _lookingTime : _teachingTime;
+			const float delayTime = 1f;
+			GameEvents.LookHappeningIn.Dispatch(delayTime);
+			yield return new WaitForSecondsRealtime(delayTime);
 			
-			_isTeaching = !_isTeaching;
-			
-			if (_isTeaching)
-			{
-				Debug.Log("Safe again");
-				GameEvents.LookOver.Dispatch();
-			}
+			_stateTimer = _lookingTime;
+			_animator.SetTrigger(FaceKids);
+			_State = TeacherState.Looking;
 		}
 	}
 }

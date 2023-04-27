@@ -10,7 +10,7 @@ namespace Classroom
 		
 		void Awake()
 		{
-			GameEvents.TeachCheck.AddListener(OnTeachCheck);
+			GameEvents.LookCheck.AddListener(OnTeachCheck);
 		}
 
 		void OnTeachCheck()
@@ -24,7 +24,7 @@ namespace Classroom
 
 				if (item.Speed >= _catchSpeed)
 				{
-					Debug.Log("Caught something: " + item);
+					GameEvents.KidCaught.Dispatch();
 				}
 			}
 		}

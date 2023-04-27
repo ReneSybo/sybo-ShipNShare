@@ -9,7 +9,8 @@ namespace Classroom
 		public static Event<GameSound> AudioPlayed = new Event<GameSound>();
 		public static Event<float> LookHappeningIn = new Event<float>();
 		public static Event LookOver = new Event();
-		public static Event TeachCheck = new Event();
+		public static Event LookCheck = new Event();
+		public static Event KidCaught = new Event();
 	}
 
 	public class Event
