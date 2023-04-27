@@ -1,5 +1,6 @@
 ﻿using System;
 using Classroom.Sound;
+using UnityEngine;
 
 namespace Classroom
 {
@@ -8,6 +9,7 @@ namespace Classroom
 		public static Event<GameSound> AudioPlayed = new Event<GameSound>();
 		public static Event<float> LookHappeningIn = new Event<float>();
 		public static Event LookOver = new Event();
+		public static Event TeachCheck = new Event();
 	}
 
 	public class Event

@@ -8,7 +8,7 @@ namespace Classroom
 	{
 		[SerializeField] float _teachingTime = 10f;
 		[SerializeField] float _lookingTime = 1f;
-		[SerializeField] float _rotateSpeed = 360f;
+		[SerializeField] float _rotateTime = 1f;
 
 		bool _isTeaching;
 		bool _isRotating;
@@ -55,6 +55,11 @@ namespace Classroom
 					StartCoroutine(RotateAround());
 				}
 			}
+
+			if (!_isTeaching)
+			{
+				GameEvents.TeachCheck.Dispatch();
+			}
 		}
 
 		IEnumerator RotateAround()
@@ -69,15 +74,23 @@ namespace Classroom
 				const float delayTime = 1f;
 				GameEvents.LookHappeningIn.Dispatch(delayTime);
 				yield return new WaitForSecondsRealtime(delayTime);
-				Debug.Log("NO LONGER SAFE");
 			}
 
-			do
+			float rotateRatio = 0f;
+			float timer = 0f;
+
+			Quaternion startRotation = _transform.localRotation;
+
+			while (rotateRatio < 1)
 			{
-				current = Quaternion.RotateTowards(_transform.localRotation, target, Time.deltaTime * _rotateSpeed);
+				current = Quaternion.Lerp(startRotation, target, rotateRatio);
 				_transform.localRotation = current;
+				
+				timer += Time.deltaTime;
+				rotateRatio = timer / _rotateTime;
+				
 				yield return new WaitForEndOfFrame();
-			} while (target != current);
+			}
 
 			_isRotating = false;
 			_rotateTimer = _isTeaching ? _lookingTime : _teachingTime;

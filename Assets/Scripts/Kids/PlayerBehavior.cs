@@ -1,11 +1,10 @@
-﻿using System;
+﻿using Kids;
 using UnityEngine;
 
 namespace Classroom
 {
-	public class PlayerBehavior : MonoBehaviour
+	public class PlayerBehavior : CatchableItem
 	{
-		[SerializeField] Rigidbody _body;
 		[SerializeField] float _speed;
 		[SerializeField] float _maxVelocity = 99999;
 		[SerializeField] float _currentVelocity;
