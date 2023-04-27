@@ -16,13 +16,9 @@ namespace Classroom
 		Transform _transform;
 		Vector3 _backwards;
 		
-		Vector3 _oldPos;
 		Vector3 _overviewPos;
 
 		bool _isInOverview;
-		float _revertTimer;
-		Coroutine _routine;
-		Vector3 _desiredPosition;
 
 		void Awake()
 		{
@@ -30,56 +26,38 @@ namespace Classroom
 			_backwards = -_transform.forward;
 			_overviewPos = _overviewTransform.position;
 
-			_isInOverview = false;
-			_revertTimer = 0f;
-			
-			GameEvents.LookHappeningIn.AddListener(OnAboutToLook);
-			GameEvents.LookOver.AddListener(OnLookOver);
-		}
-
-		void OnLookOver()
-		{
-			if (_routine != null)
-			{
-				StopCoroutine(_routine);
-				_routine = null;
-			}
-
-			_desiredPosition = _oldPos;
-			// _routine = StartCoroutine(MoveCameraTo(true));
-		}
-
-		void OnAboutToLook(float delay)
-		{
-			if (_routine != null)
-			{
-				StopCoroutine(_routine);
-				_routine = null;
-			}
-			
-			_oldPos = transform.position;
+			_transform.position = _overviewPos;
 			_isInOverview = true;
 			
-			_desiredPosition = _overviewPos;
-			// _routine = StartCoroutine(MoveCameraTo(false));
+			GameEvents.GameEnded.AddListener(OnKidCaught);
+			GameEvents.GameStarted.AddListener(OnGameStarted);
 		}
 
-		IEnumerator MoveCameraTo(bool returningToNormal)
+		void OnGameStarted()
+		{
+			Vector3 targetPosition = _target.position + (_backwards * _distance);
+			StartCoroutine(MoveCameraTo(targetPosition, 2f, true));
+		}
+
+		void OnKidCaught()
+		{
+			_isInOverview = true;
+			StartCoroutine(MoveCameraTo(_overviewPos, 0f, false));
+		}
+
+		IEnumerator MoveCameraTo(Vector3 pos, float delay, bool removeOverview)
 		{
 			Vector3 current;
 			Vector3 start = _transform.position;
 
 			float moveRatio = 0f;
 			float timer = 0f;
+
+			yield return new WaitForSecondsRealtime(delay);
 			
 			while (moveRatio < 1)
 			{
-				if (returningToNormal)
-				{
-					_desiredPosition =  _target.position + (_backwards * _distance);
-				}
-				
-				current = Vector3.Slerp(start, _desiredPosition, moveRatio);
+				current = Vector3.Slerp(start, pos, moveRatio);
 				_transform.position = current;
 
 				timer += Time.deltaTime;
@@ -88,19 +66,18 @@ namespace Classroom
 				yield return new WaitForEndOfFrame();
 			}
 
-			if (returningToNormal)
+			if (removeOverview)
 			{
 				_isInOverview = false;
 			}
-			
 		}
 
 		void Update()
 		{
-			// if (!_isInOverview)
-			// {
-			// 	_transform.position = _target.position + (_backwards * _distance);
-			// }
+			if (!_isInOverview)
+			{
+				_transform.position = _target.position + (_backwards * _distance);
+			}
 			
 		}
 

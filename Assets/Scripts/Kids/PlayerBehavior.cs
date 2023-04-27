@@ -8,9 +8,36 @@ namespace Classroom
 		[SerializeField] float _speed;
 		[SerializeField] float _maxVelocity = 99999;
 		[SerializeField] float _currentVelocity;
-		
+
+		bool _canMove;
+
+		protected override void Awake()
+		{
+			base.Awake();
+			
+			_canMove = false;
+			
+			GameEvents.GameStarted.AddListener(OnStartGame);
+			GameEvents.GameEnded.AddListener(OnEndGame);
+		}
+
+		void OnEndGame()
+		{
+			_canMove = false;
+		}
+
+		void OnStartGame()
+		{
+			_canMove = true;
+		}
+
 		void Update()
 		{
+			if (!_canMove)
+			{
+				return;
+			}
+			
 			Vector3 movement = GetMovement();
 			_body.AddForce(movement);
 		
@@ -58,8 +85,6 @@ namespace Classroom
 				Vector3 position = body.position;
 				position.y *= 1.5f;
 				
-				Debug.DrawLine(transform.position, position);
-
 				body.AddForceAtPosition(movement * -100, position);
 			}
 		}

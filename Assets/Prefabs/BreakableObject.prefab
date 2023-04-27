@@ -45,10 +45,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 73d32a4ba41a4370a1413ab93536e415, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _dispatcher: {fileID: 1672908954792626573}
+  _breakSound: {fileID: 0}
+  _impactForBreak: 0
+  _body: {fileID: 681984160120985354}
   _unbrokenRoot: {fileID: 3459022185595693392}
   _brokenRoot: {fileID: 8422903795243585057}
-  _strength: 0
+  _dispatcher: {fileID: 1672908954792626573}
 --- !u!1 &3459022185595693392
 GameObject:
   m_ObjectHideFlags: 0

@@ -1,5 +1,4 @@
-﻿using System.Collections;
-using Classroom.Sound;
+﻿using Classroom.Sound;
 using UnityEngine;
 
 namespace Classroom
@@ -16,35 +15,47 @@ namespace Classroom
 		[SerializeField] float _awrenessDropPerSecond = 1f;
 		[SerializeField] float _currentAwareness = 0f;
 
+		bool _hasCaughtYou;
+		
 		public float CurrentAwareness => _currentAwareness;
 		public float AwarenessCap => _awarenessCap;
 		
 		void Awake()
 		{
 			GameEvents.AudioPlayed.AddListener(OnSoundPlayed);
-			GameEvents.KidCaught.AddListener(OnKidCaught);
+			GameEvents.AudioAwarenessAdded.AddListener(OnAwarenessAdded);
+			GameEvents.QuitGame.AddListener(OnGameEnded);
 		}
-		
-		void OnSoundPlayed(GameSound sound)
+
+		void OnGameEnded()
 		{
-			if (sound.Awareness <= 0f)
+			_animator.SetTrigger(FaceBoard);
+			_currentAwareness = 0f;
+			_hasCaughtYou = false;
+		}
+
+		void OnAwarenessAdded(float awareness)
+		{
+			if (awareness > 0f)
 			{
-				return;
+				_currentAwareness += awareness;
 			}
-
-			_currentAwareness += sound.Awareness;
 		}
 
-		void OnKidCaught()
-		{
-			_animator.SetTrigger(Caught);
-		}
+		void OnSoundPlayed(GameSound sound) => OnAwarenessAdded(sound.Awareness);
 
 		void Update()
 		{
+			if (_hasCaughtYou)
+			{
+				return;
+			}
+			
 			if (_currentAwareness >= _awarenessCap)
 			{
+				_hasCaughtYou = true;
 				_animator.SetTrigger(Caught);
+				GameEvents.GameEnded.Dispatch();
 			}
 
 			_currentAwareness -= _awrenessDropPerSecond * Time.deltaTime;

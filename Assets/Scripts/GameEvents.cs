@@ -1,16 +1,16 @@
 ﻿using System;
 using Classroom.Sound;
-using UnityEngine;
 
 namespace Classroom
 {
 	public static class GameEvents
 	{
+		public static Event<float> AudioAwarenessAdded = new Event<float>();
 		public static Event<GameSound> AudioPlayed = new Event<GameSound>();
 		public static Event<float> LookHappeningIn = new Event<float>();
-		public static Event LookOver = new Event();
-		public static Event LookCheck = new Event();
-		public static Event KidCaught = new Event();
+		public static Event GameStarted = new Event();
+		public static Event GameEnded = new Event();
+		public static Event QuitGame = new Event();
 	}
 
 	public class Event

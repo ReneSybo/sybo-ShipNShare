@@ -17,9 +17,14 @@ namespace Classroom
 		bool _broken;
 		Rigidbody _unbrokenBody;
 		Rigidbody[] _brokenBodies;
+		
+		Vector3 _startPos;
+		Quaternion _startRot;
+		Transform _transform;
 
 		void Awake()
 		{
+			_transform = transform;
 			_dispatcher.OnHit += OnBreakableHit;
 			
 			_unbrokenRoot.SetActive(true);
@@ -27,6 +32,27 @@ namespace Classroom
 
 			_unbrokenBody = _unbrokenRoot.GetComponentInParent<Rigidbody>();
 			_brokenBodies = _brokenRoot.GetComponentsInChildren<Rigidbody>();
+
+			_startPos = _transform.localPosition;
+			_startRot = _transform.localRotation;
+			
+			GameEvents.QuitGame.AddListener(OnReset);
+
+			BrokenObject[] brokenChildren = GetComponentsInChildren<BrokenObject>(true);
+			foreach (BrokenObject child in brokenChildren)
+			{
+				child.Prepare();
+			}
+		}
+
+		void OnReset()
+		{
+			_broken = false;
+			_transform.localPosition = _startPos;
+			_transform.localRotation = _startRot;
+			
+			_unbrokenRoot.SetActive(true);
+			_brokenRoot.SetActive(false);
 		}
 
 		void OnBreakableHit(float impactimpulse)
