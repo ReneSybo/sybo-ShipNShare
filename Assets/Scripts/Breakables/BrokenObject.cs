@@ -1,4 +1,5 @@
-﻿using Classroom.Sound;
+﻿using System;
+using Classroom.Sound;
 using UnityEngine;
 
 namespace Classroom
@@ -15,6 +16,8 @@ namespace Classroom
 		Quaternion _startRot;
 		Transform _transform;
 
+		bool _prepared;
+
 		public void Prepare()
 		{
 			_transform = transform;
@@ -22,6 +25,7 @@ namespace Classroom
 			_startRot = _transform.localRotation;
 			
 			GameEvents.QuitGame.AddListener(OnReset);
+			_prepared = true;
 		}
 
 		void OnReset()
@@ -31,6 +35,14 @@ namespace Classroom
 			
 			_body.velocity = Vector3.zero;
 			_body.angularVelocity = Vector3.zero;
+		}
+
+		void Start()
+		{
+			if (!_prepared)
+			{
+				Prepare();
+			}
 		}
 
 		void OnCollisionEnter(Collision other)
