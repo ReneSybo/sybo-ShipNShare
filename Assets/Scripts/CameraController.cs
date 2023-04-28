@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using UnityEngine;
 
 namespace Classroom
@@ -35,16 +36,21 @@ namespace Classroom
 
 		void OnGameStarted()
 		{
-			StartCoroutine(MoveCameraTo(Vector3.zero, 2f, true));
+			StartCoroutine(MoveCameraTo(Vector3.zero, 1.25f, true, OnPostDelay));
+		}
+
+		void OnPostDelay()
+		{
+			GameEvents.MovementUnlocked.Dispatch();
 		}
 
 		void OnKidCaught()
 		{
 			_isInOverview = true;
-			StartCoroutine(MoveCameraTo(_overviewPos, 0f, false));
+			StartCoroutine(MoveCameraTo(_overviewPos, 0f, false, null));
 		}
 
-		IEnumerator MoveCameraTo(Vector3 pos, float delay, bool removeOverview)
+		IEnumerator MoveCameraTo(Vector3 pos, float delay, bool removeOverview, Action OnDelayDone)
 		{
 			Vector3 current;
 			Vector3 start = _transform.position;
@@ -53,6 +59,7 @@ namespace Classroom
 			float timer = 0f;
 
 			yield return new WaitForSecondsRealtime(delay);
+			OnDelayDone?.Invoke();
 			
 			while (moveRatio < 1)
 			{

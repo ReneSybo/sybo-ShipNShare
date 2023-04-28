@@ -8,11 +8,14 @@ namespace Classroom
 		static readonly int Moving = Animator.StringToHash("Moving");
 		static readonly int Contact = Animator.StringToHash("Contact");
 		
+		[Header("Config")]
 		[SerializeField] Transform _meshContainer;
 		[SerializeField] float _speed;
 		[SerializeField] float _maxVelocity = 99999;
-		[SerializeField] float _currentVelocity;
 		[SerializeField] float _collisionCheckTime = 1f;
+		
+		[Header("Debug info reading field")]
+		[SerializeField] float _currentVelocity;
 
 		bool _canMove;
 		Vector3 _currentMeshForward;
@@ -25,11 +28,24 @@ namespace Classroom
 			
 			_canMove = false;
 			
-			GameEvents.GameStarted.AddListener(OnStartGame);
 			GameEvents.GameEnded.AddListener(OnEndGame);
+			GameEvents.QuitGame.AddListener(OnQuitGame);
+			GameEvents.MovementUnlocked.AddListener(OnCanMove);
 
 			_currentMeshForward = _meshContainer.forward;
 			_defaultConstraints = _body.constraints;
+		}
+
+		void OnCanMove()
+		{
+			_body.constraints = _defaultConstraints;
+			_canMove = true;
+		}
+
+		void OnQuitGame()
+		{
+			_currentMeshForward = Vector3.forward;
+			_meshContainer.forward = _currentMeshForward;
 		}
 
 		void OnEndGame()
@@ -40,12 +56,6 @@ namespace Classroom
 			_animator.SetBool(Moving, false);
 			_animator.SetBool(Contact, false);
 			_body.constraints = RigidbodyConstraints.FreezeAll;
-		}
-
-		void OnStartGame()
-		{
-			_body.constraints = _defaultConstraints;
-			_canMove = true;
 		}
 
 		void Update()

@@ -11,6 +11,7 @@ namespace Classroom
 		public static Event GameStarted = new Event();
 		public static Event GameEnded = new Event();
 		public static Event QuitGame = new Event();
+		public static Event MovementUnlocked = new Event();
 	}
 
 	public class Event
