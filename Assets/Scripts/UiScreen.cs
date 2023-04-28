@@ -18,9 +18,7 @@ namespace Classroom
 		
 		[SerializeField] Button _playButton;
 		[SerializeField] Button _retryButton;
-		[SerializeField] Teacher _teacher;
 		
-		[SerializeField] TMP_Text _awarenessText;
 		[SerializeField] TMP_Text _timerText;
 		
 		[SerializeField] TMP_Text _endTimerText;
@@ -44,14 +42,14 @@ namespace Classroom
 			_retryButton.onClick.AddListener(OnRetry);
 			
 			_mainMenuRoot.SetActive(true);
-			_gameScreen.SetActive(true);
+			_gameScreen.SetActive(false);
 			_endScreen.SetActive(false);
 			
 			_winText.SetActive(false);
 			_loseText.SetActive(false);
 			_playing = false;
 
-			Kid[] allKids = Object.FindObjectsOfType<Kid>();
+			Kid[] allKids = FindObjectsOfType<Kid>();
 			_kidCount = allKids.Length;
 		}
 
@@ -113,13 +111,9 @@ namespace Classroom
 		{
 			if (_playing)
 			{
-				string current = _teacher.CurrentAwareness.ToString("0.00");
-				string cap = _teacher.AwarenessCap.ToString("0");
-
 				TimeSpan t = TimeSpan.FromSeconds(_timeSpend);
 				string timeText = string.Format("Time: {0:D1}:{1:D2}", t.Minutes, t.Seconds);
 				
-				_awarenessText.text = $"{current}/{cap}";
 				_timerText.text = timeText;
 
 				_timeSpend += Time.deltaTime;
