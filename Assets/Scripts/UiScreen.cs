@@ -3,7 +3,6 @@ using Classroom.Kids;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
-using Object = UnityEngine.Object;
 
 namespace Classroom
 {
@@ -121,6 +120,21 @@ namespace Classroom
 				_timerText.text = timeText;
 
 				_timeSpend += Time.deltaTime;
+			}
+			else
+			{
+				bool pressedToReset = Input.GetKeyDown(KeyCode.Return) || Input.GetKeyDown(KeyCode.Space);
+				if (pressedToReset)
+				{
+					if (_retryButton.gameObject.activeInHierarchy)
+					{
+						OnRetry();
+					}
+					else if (_playButton.gameObject.activeInHierarchy)
+					{
+						OnPlayClick();
+					}
+				}
 			}
 		}
 	}

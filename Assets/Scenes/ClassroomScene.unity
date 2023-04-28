@@ -2322,6 +2322,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: Canvas
       objectReference: {fileID: 0}
+    - target: {fileID: 4230927552543246403, guid: b20be4347e5f4c041bd4e9a65afbcd11, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8971333440778335033, guid: b20be4347e5f4c041bd4e9a65afbcd11, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -29.389954
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b20be4347e5f4c041bd4e9a65afbcd11, type: 3}
 --- !u!1001 &3099897298659336707

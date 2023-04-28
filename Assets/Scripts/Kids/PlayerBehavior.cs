@@ -101,23 +101,23 @@ namespace Classroom
 				return movement;
 			}
 			
-			if (Input.GetKey(KeyCode.W))
+			if (Input.GetKey(KeyCode.W) || Input.GetKey(KeyCode.UpArrow))
 			{
 				moved = true;
 				movement.z += _speed * Time.deltaTime;
 			}
-			else if (Input.GetKey(KeyCode.S))
+			else if (Input.GetKey(KeyCode.S) || Input.GetKey(KeyCode.DownArrow))
 			{
 				moved = true;
 				movement.z -= _speed * Time.deltaTime;
 			}
 			
-			if (Input.GetKey(KeyCode.D))
+			if (Input.GetKey(KeyCode.D) || Input.GetKey(KeyCode.RightArrow))
 			{
 				moved = true;
 				movement.x += _speed * Time.deltaTime;
 			}
-			else if (Input.GetKey(KeyCode.A))
+			else if (Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.LeftArrow))
 			{
 				moved = true;
 				movement.x -= _speed * Time.deltaTime;
