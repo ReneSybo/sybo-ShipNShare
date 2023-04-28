@@ -70,6 +70,8 @@ namespace Classroom.Kids
 			
 			if (colliderName == "Exit")
 			{
+				GameEvents.KidRescued.Dispatch();
+				
 				gameObject.SetActive(false);
 				Free();
 				GameEvents.AudioPlayed.Dispatch(_freedomSounds);

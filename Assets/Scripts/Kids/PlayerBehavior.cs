@@ -30,6 +30,7 @@ namespace Classroom
 			_canMove = false;
 			
 			GameEvents.GameEnded.AddListener(OnEndGame);
+			GameEvents.GameWon.AddListener(OnEndGame);
 			GameEvents.QuitGame.AddListener(OnQuitGame);
 			GameEvents.MovementUnlocked.AddListener(OnCanMove);
 

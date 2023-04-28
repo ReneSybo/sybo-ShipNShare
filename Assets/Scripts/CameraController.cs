@@ -31,6 +31,7 @@ namespace Classroom
 			_isInOverview = true;
 			
 			GameEvents.GameEnded.AddListener(OnKidCaught);
+			GameEvents.GameWon.AddListener(OnKidCaught);
 			GameEvents.GameStarted.AddListener(OnGameStarted);
 		}
 
