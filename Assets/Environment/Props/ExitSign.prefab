@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 4162170628786558244}
   - component: {fileID: 1166022248341633187}
   - component: {fileID: 6065993980236687857}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: ExitSign
   m_TagString: Untagged
   m_Icon: {fileID: 0}

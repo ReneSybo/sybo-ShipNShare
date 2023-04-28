@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 4424422907647536549}
   - component: {fileID: 6793191691895792939}
   - component: {fileID: 5234026229597274726}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Prop_Blackboard
   m_TagString: Untagged
   m_Icon: {fileID: 0}

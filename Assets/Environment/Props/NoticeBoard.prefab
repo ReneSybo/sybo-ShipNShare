@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 223959266661154726}
   - component: {fileID: 4069158518228826090}
   - component: {fileID: 3098018609059354739}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: NoticeBoard
   m_TagString: Untagged
   m_Icon: {fileID: 0}

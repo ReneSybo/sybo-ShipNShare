@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 8783156674106738033}
   - component: {fileID: 3643135128175476004}
   - component: {fileID: 8469783640128345391}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Trophee
   m_TagString: Untagged
   m_Icon: {fileID: 0}

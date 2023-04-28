@@ -3,7 +3,7 @@
 --- !u!129 &1
 PlayerSettings:
   m_ObjectHideFlags: 0
-  serializedVersion: 23
+  serializedVersion: 22
   productGUID: f793e2a9acd21e04688b0bdfc2691baa
   AndroidProfiler: 0
   AndroidFilterTouchesWhenObscured: 0
@@ -599,6 +599,7 @@ PlayerSettings:
   webGLDecompressionFallback: 0
   scriptingDefineSymbols:
     1: AMPLIFY_SHADER_EDITOR
+    13: AMPLIFY_SHADER_EDITOR
   additionalCompilerArguments: {}
   platformArchitecture: {}
   scriptingBackend: {}
