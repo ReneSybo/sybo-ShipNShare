@@ -64,14 +64,19 @@ namespace Classroom.Kids
 			}
 		}
 
-		void OnTriggerEnter(Collider collision)
+		void OnTriggerEnter(Collider collider)
 		{
-			if (collision.gameObject.name == "Exit")
+			string colliderName = collider.name;
+			
+			if (colliderName == "Exit")
 			{
+				gameObject.SetActive(false);
 				Free();
-				_collider.enabled = false;
-				
 				GameEvents.AudioPlayed.Dispatch(_freedomSounds);
+			}
+			else if (colliderName == "LoseZone")
+			{
+				GameEvents.AudioAwarenessAdded.Dispatch(100f);
 			}
 		}
 
@@ -79,6 +84,8 @@ namespace Classroom.Kids
 		{
 			base.ResetState();
 
+			gameObject.SetActive(true);
+			
 			_animator.SetTrigger(Reset);
 			_collider.enabled = true;
 

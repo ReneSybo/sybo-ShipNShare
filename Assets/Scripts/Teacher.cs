@@ -22,7 +22,6 @@ namespace Classroom
 		[SerializeField] AwarenessSoundConfig[] _soundConfigs = null;
 		AwarenessState _currentState;
 		
-		
 		enum AwarenessState
 		{
 			Unknown,

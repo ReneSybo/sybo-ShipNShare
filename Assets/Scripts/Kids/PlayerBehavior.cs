@@ -1,4 +1,5 @@
-﻿using Kids;
+﻿using System;
+using Kids;
 using UnityEngine;
 
 namespace Classroom
@@ -122,6 +123,14 @@ namespace Classroom
 			}
 
 			return movement;
+		}
+
+		void OnTriggerEnter(Collider other)
+		{
+			if (other.name == "LoseZone")
+			{
+				GameEvents.AudioAwarenessAdded.Dispatch(100f);
+			}
 		}
 
 		void OnCollisionEnter(Collision collision)
