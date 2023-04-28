@@ -112,6 +112,11 @@ namespace Classroom
 
 		void Update()
 		{
+			if (Input.GetKeyDown(KeyCode.Escape))
+			{
+				Application.Quit(0);
+			}
+			
 			if (_playing)
 			{
 				TimeSpan t = TimeSpan.FromSeconds(_timeSpend);
