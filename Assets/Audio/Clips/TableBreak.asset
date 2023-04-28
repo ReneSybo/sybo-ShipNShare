@@ -13,4 +13,4 @@ MonoBehaviour:
   m_Name: TableBreak
   m_EditorClassIdentifier: 
   Clip: {fileID: 8300000, guid: f570c893903a0404ab02ff65ceba67ea, type: 3}
-  Awareness: 5
+  Awareness: 3

@@ -13,4 +13,4 @@ MonoBehaviour:
   m_Name: ObjectImpact
   m_EditorClassIdentifier: 
   Clip: {fileID: 8300000, guid: e42eba19e7803df4db572992dfe12818, type: 3}
-  Awareness: 1
+  Awareness: 0.5
