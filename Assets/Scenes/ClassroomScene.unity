@@ -229,6 +229,12 @@ PrefabInstance:
     m_RemovedComponents:
     - {fileID: 33264953950165127, guid: 12898b68d06ad6d4fadec4db29aa05ed, type: 3}
     - {fileID: 6655420613332054980, guid: 12898b68d06ad6d4fadec4db29aa05ed, type: 3}
+    - {fileID: 3339757422247142179, guid: 12898b68d06ad6d4fadec4db29aa05ed, type: 3}
+    - {fileID: 1469842636293070759, guid: 12898b68d06ad6d4fadec4db29aa05ed, type: 3}
+    - {fileID: 5026237886040225163, guid: 12898b68d06ad6d4fadec4db29aa05ed, type: 3}
+    - {fileID: 1809442392299509679, guid: 12898b68d06ad6d4fadec4db29aa05ed, type: 3}
+    - {fileID: 7338737374480712627, guid: 12898b68d06ad6d4fadec4db29aa05ed, type: 3}
+    - {fileID: 507482569432195745, guid: 12898b68d06ad6d4fadec4db29aa05ed, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 12898b68d06ad6d4fadec4db29aa05ed, type: 3}
 --- !u!4 &26965098 stripped
 Transform:
@@ -1377,6 +1383,12 @@ PrefabInstance:
     m_RemovedComponents:
     - {fileID: 33264953950165127, guid: 12898b68d06ad6d4fadec4db29aa05ed, type: 3}
     - {fileID: 6655420613332054980, guid: 12898b68d06ad6d4fadec4db29aa05ed, type: 3}
+    - {fileID: 3339757422247142179, guid: 12898b68d06ad6d4fadec4db29aa05ed, type: 3}
+    - {fileID: 1469842636293070759, guid: 12898b68d06ad6d4fadec4db29aa05ed, type: 3}
+    - {fileID: 5026237886040225163, guid: 12898b68d06ad6d4fadec4db29aa05ed, type: 3}
+    - {fileID: 1809442392299509679, guid: 12898b68d06ad6d4fadec4db29aa05ed, type: 3}
+    - {fileID: 7338737374480712627, guid: 12898b68d06ad6d4fadec4db29aa05ed, type: 3}
+    - {fileID: 507482569432195745, guid: 12898b68d06ad6d4fadec4db29aa05ed, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 12898b68d06ad6d4fadec4db29aa05ed, type: 3}
 --- !u!4 &1051303812 stripped
 Transform:

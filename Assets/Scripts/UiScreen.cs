@@ -20,6 +20,7 @@ namespace Classroom
 		[SerializeField] Button _retryButton;
 		
 		[SerializeField] TMP_Text _timerText;
+		[SerializeField] TMP_Text _kidsText;
 		
 		[SerializeField] TMP_Text _endTimerText;
 		[SerializeField] TMP_Text _endKidText;
@@ -60,6 +61,8 @@ namespace Classroom
 			{
 				GameEvents.GameWon.Dispatch();
 			}
+
+			_kidsText.text = $"Kids: {_kidsRescued}/{_kidCount}";
 		}
 
 		void OnGameWon()
@@ -104,6 +107,7 @@ namespace Classroom
 			_playing = true;
 			_gameScreen.SetActive(true);
 			_mainMenuRoot.SetActive(false);
+			_kidsText.text = $"Kids: {_kidsRescued}/{_kidCount}";
 			GameEvents.GameStarted.Dispatch();
 		}
 
