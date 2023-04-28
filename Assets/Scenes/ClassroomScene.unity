@@ -889,17 +889,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 6536890836526114869, guid: dc318bcde0c34b4459b34d2d224bd594, type: 3}
   m_PrefabInstance: {fileID: 687536719}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &704613076 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 5949742434013152229, guid: dfe497cc9c9f51749a581c9729f6b401, type: 3}
-  m_PrefabInstance: {fileID: 3386338680148641211}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 05ef852869224c4eb153f5facfd81e5c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!108 &705507994 stripped
 Light:
   m_CorrespondingSourceObject: {fileID: 7345771836936960502, guid: f8c986583ec8e4786a5b9add1d89a283, type: 3}
@@ -2332,14 +2321,6 @@ PrefabInstance:
     - target: {fileID: 2470797612475802155, guid: b20be4347e5f4c041bd4e9a65afbcd11, type: 3}
       propertyPath: m_Name
       value: Canvas
-      objectReference: {fileID: 0}
-    - target: {fileID: 8877377402543253086, guid: b20be4347e5f4c041bd4e9a65afbcd11, type: 3}
-      propertyPath: _teacher
-      value: 
-      objectReference: {fileID: 704613076}
-    - target: {fileID: 8971333440778335033, guid: b20be4347e5f4c041bd4e9a65afbcd11, type: 3}
-      propertyPath: m_AnchoredPosition.y
-      value: -29.389984
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b20be4347e5f4c041bd4e9a65afbcd11, type: 3}
