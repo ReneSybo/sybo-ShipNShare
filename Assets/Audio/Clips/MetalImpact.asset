@@ -12,5 +12,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b83331f30b6c48dd96399c20093ec4cf, type: 3}
   m_Name: MetalImpact
   m_EditorClassIdentifier: 
-  Clip: {fileID: 8300000, guid: fc61e132d10d23a41a5ba7702bfc07e0, type: 3}
+  Clip: {fileID: 8300000, guid: bbf5f305db6ab4deba4bfd265e447a80, type: 3}
   Awareness: 2
