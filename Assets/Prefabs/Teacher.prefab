@@ -214,6 +214,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: BlobShadow
       objectReference: {fileID: 0}
+    - target: {fileID: 5670312104188527610, guid: 76bcbe183746ae847a874df36c3067d7, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7302519485880531283, guid: 76bcbe183746ae847a874df36c3067d7, type: 3}
       propertyPath: m_RootOrder
       value: 0
