@@ -53,7 +53,6 @@ namespace Classroom
 
 			Kid[] allKids = Object.FindObjectsOfType<Kid>();
 			_kidCount = allKids.Length;
-			_kidCount = 1;
 		}
 
 		void OnKidRescued()
