@@ -54,14 +54,12 @@ Shader "Props"
 		void surf( Input i , inout SurfaceOutputStandard o )
 		{
 			o.Normal = float3(0,0,1);
-			float4 transform17 = mul(unity_ObjectToWorld,float4( 0,0,0,1 ));
-			float2 appendResult18 = (float2(transform17.x , transform17.y));
 			float3 ase_worldPos = i.worldPos;
 			float3 ase_worldNormal = WorldNormalVector( i, float3( 0, 0, 1 ) );
 			float3 ase_vertex3Pos = mul( unity_WorldToObject, float4( i.worldPos , 1 ) );
 			float3 ase_vertexNormal = mul( unity_WorldToObject, float4( ase_worldNormal, 0 ) );
 			ase_vertexNormal = normalize( ase_vertexNormal );
-			float4 triplanar9 = TriplanarSampling9( _TopTexture0, ase_vertex3Pos, ase_vertexNormal, 1.0, ( appendResult18 * float2( 0.05,0.05 ) ), 1.0, 0 );
+			float4 triplanar9 = TriplanarSampling9( _TopTexture0, ase_vertex3Pos, ase_vertexNormal, 1.0, float2( 0.05,0.05 ), 1.0, 0 );
 			float4 blendOpSrc13 = triplanar9;
 			float4 blendOpDest13 = i.vertexColor;
 			float4 lerpBlendMode13 = lerp(blendOpDest13,( blendOpSrc13 * blendOpDest13 ),_texture);
@@ -158,22 +156,21 @@ Version=19105
 Node;AmplifyShaderEditor.StandardSurfaceOutputNode;0;90.37456,-131.9468;Float;False;True;-1;2;ASEMaterialInspector;0;0;Standard;Props;False;False;False;False;False;False;False;False;False;False;False;False;False;False;False;False;False;False;False;False;False;Off;0;False;;0;False;;False;0;False;;0;False;;False;0;Opaque;0.5;True;True;0;False;Opaque;;Geometry;All;12;all;True;True;True;True;0;False;;False;0;False;;255;False;;255;False;;0;False;;0;False;;0;False;;0;False;;0;False;;0;False;;0;False;;0;False;;False;2;15;10;25;False;0.5;True;0;0;False;;0;False;;0;0;False;;0;False;;0;False;;0;False;;0;False;0;0,0,0,0;VertexOffset;True;False;Cylindrical;False;True;Relative;0;;-1;-1;-1;-1;0;False;0;0;False;;-1;0;False;;0;0;0;False;0.1;False;;0;False;;False;16;0;FLOAT3;0,0,0;False;1;FLOAT3;0,0,0;False;2;FLOAT3;0,0,0;False;3;FLOAT;0;False;4;FLOAT;0;False;5;FLOAT;0;False;6;FLOAT3;0,0,0;False;7;FLOAT3;0,0,0;False;8;FLOAT;0;False;9;FLOAT;0;False;10;FLOAT;0;False;13;FLOAT3;0,0,0;False;11;FLOAT3;0,0,0;False;12;FLOAT3;0,0,0;False;14;FLOAT4;0,0,0,0;False;15;FLOAT3;0,0,0;False;0
 Node;AmplifyShaderEditor.SaturateNode;14;-136.4732,-41.47403;Inherit;False;1;0;COLOR;0,0,0,0;False;1;COLOR;0
 Node;AmplifyShaderEditor.VertexColorNode;1;-639.1144,-27.52743;Inherit;False;0;5;COLOR;0;FLOAT;1;FLOAT;2;FLOAT;3;FLOAT;4
-Node;AmplifyShaderEditor.RangedFloatNode;11;-692.6942,150.1396;Inherit;False;Property;_texture;texture;1;0;Create;True;0;0;0;False;0;False;0.4106652;0.145;0;1;0;1;FLOAT;0
+Node;AmplifyShaderEditor.RangedFloatNode;11;-692.6942,150.1396;Inherit;False;Property;_texture;texture;1;0;Create;True;0;0;0;False;0;False;0.4106652;0.152;0;1;0;1;FLOAT;0
 Node;AmplifyShaderEditor.BlendOpsNode;13;-380.0276,-52.36102;Inherit;False;Multiply;True;3;0;FLOAT4;0,0,0,0;False;1;COLOR;0,0,0,0;False;2;FLOAT;1;False;1;COLOR;0
 Node;AmplifyShaderEditor.TriplanarNode;9;-809.3629,-251.1402;Inherit;True;Spherical;Object;False;Top Texture 0;_TopTexture0;white;0;Assets/Environment/randompaintstrokes.png;Mid Texture 0;_MidTexture0;white;0;None;Bot Texture 0;_BotTexture0;white;1;None;Triplanar Sampler;Tangent;10;0;SAMPLER2D;;False;5;FLOAT;1;False;1;SAMPLER2D;;False;6;FLOAT;0;False;2;SAMPLER2D;;False;7;FLOAT;0;False;9;FLOAT3;0,0,0;False;8;FLOAT;1;False;3;FLOAT2;0.05,0.05;False;4;FLOAT;1;False;5;FLOAT4;0;FLOAT;1;FLOAT;2;FLOAT;3;FLOAT;4
 Node;AmplifyShaderEditor.ObjectToWorldTransfNode;17;-1342.916,-612.837;Inherit;False;1;0;FLOAT4;0,0,0,1;False;5;FLOAT4;0;FLOAT;1;FLOAT;2;FLOAT;3;FLOAT;4
 Node;AmplifyShaderEditor.DynamicAppendNode;18;-1099.448,-478.338;Inherit;False;FLOAT2;4;0;FLOAT;0;False;1;FLOAT;0;False;2;FLOAT;0;False;3;FLOAT;0;False;1;FLOAT2;0
 Node;AmplifyShaderEditor.SimpleMultiplyOpNode;19;-952.1167,-347.4833;Inherit;False;2;2;0;FLOAT2;0,0;False;1;FLOAT2;0,0;False;1;FLOAT2;0
-Node;AmplifyShaderEditor.Vector2Node;16;-1264.433,-323.0029;Inherit;False;Constant;_Vector0;Vector 0;4;0;Create;True;0;0;0;False;0;False;0.05,0.05;0,0;0;3;FLOAT2;0;FLOAT;1;FLOAT;2
+Node;AmplifyShaderEditor.Vector2Node;16;-1263.433,-310.0029;Inherit;False;Constant;_Vector0;Vector 0;4;0;Create;True;0;0;0;False;0;False;0.05,0.05;0,0;0;3;FLOAT2;0;FLOAT;1;FLOAT;2
 WireConnection;0;0;14;0
 WireConnection;14;0;13;0
 WireConnection;13;0;9;0
 WireConnection;13;1;1;0
 WireConnection;13;2;11;0
-WireConnection;9;3;19;0
 WireConnection;18;0;17;1
 WireConnection;18;1;17;2
 WireConnection;19;0;18;0
 WireConnection;19;1;16;0
 ASEEND*/
-//CHKSM=1AC8D54BA8665E3C73F896A04F8661376C29087F
+//CHKSM=574BF68C0A0364D9FAA7044BC19326D730413980
