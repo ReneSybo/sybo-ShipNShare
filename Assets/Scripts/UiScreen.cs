@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using Classroom.Kids;
 using TMPro;
 using UnityEngine;
@@ -28,6 +28,11 @@ namespace Classroom
 		bool _playing;
 		int _kidsRescued;
 		int _kidCount;
+		// Array of child GameObjects to enable
+		[Tooltip("The child GameObjects to enable")]
+		public GameObject[] childObjects;
+		
+		
 		
 		void Awake()
 		{
@@ -98,6 +103,10 @@ namespace Classroom
 			_winText.SetActive(false);
 			_loseText.SetActive(false);
 			_kidsRescued = 0;
+			foreach (GameObject childObject in childObjects)
+			{
+				childObject.SetActive(false);
+			}
 		}
 
 		void OnPlayClick()
@@ -108,6 +117,11 @@ namespace Classroom
 			_mainMenuRoot.SetActive(false);
 			_kidsText.text = $"Kids: {_kidsRescued}/{_kidCount}";
 			GameEvents.GameStarted.Dispatch();
+			// Enable all child objects
+			foreach (GameObject childObject in childObjects)
+			{
+				childObject.SetActive(true);
+			}
 		}
 
 		void Update()

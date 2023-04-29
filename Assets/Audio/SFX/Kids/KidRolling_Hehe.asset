@@ -12,5 +12,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b83331f30b6c48dd96399c20093ec4cf, type: 3}
   m_Name: KidRolling_Hehe
   m_EditorClassIdentifier: 
-  Clip: {fileID: 8300000, guid: d8d0a0c42e72f46caa0d4414d8fe8791, type: 3}
+  Clip: {fileID: 8300000, guid: c9afe65cd5a0944618639f44ae843ad9, type: 3}
   Awareness: 0.5

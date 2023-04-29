@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections;
 using UnityEngine;
 
@@ -28,7 +28,7 @@ namespace Classroom
 
 		IEnumerator DelayedHide()
 		{
-			yield return new WaitForSecondsRealtime(1f);
+			yield return new WaitForSecondsRealtime(3f);
 
 			_renderer.enabled = false;
 		}
